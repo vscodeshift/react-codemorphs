@@ -1,17 +1,40 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 import * as vscode from 'vscode'
 import applyTransform from '@vscodeshift/apply-jscodeshift'
 
-const transform = (): string | void | null | undefined => {
-  // REPLACE ME
-}
-
 export function activate(context: vscode.ExtensionContext): void {
-  const disposable = vscode.commands.registerCommand(
-    'extension.YOUR.COMMAND.HERE',
-    () => applyTransform(transform)
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
+      'extension.wrapWithJSXElement',
+      async () => {
+        const name = await vscode.window.showInputBox({
+          prompt: 'name of element to wrap with',
+        })
+        if (!name) return
+        await applyTransform(require('react-codemorphs/wrapWithJSXElement'), {
+          name,
+        })
+        await vscode.commands.executeCommand('editor.action.formatDocument')
+      }
+    )
   )
-
-  context.subscriptions.push(disposable)
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
+      'extension.wrapWithChildFunctionElement',
+      async () => {
+        const name = await vscode.window.showInputBox({
+          prompt: 'name of element to wrap with',
+        })
+        if (!name) return
+        await applyTransform(
+          require('react-codemorphs/wrapWithChildFunctionElement'),
+          { name }
+        )
+        await vscode.commands.executeCommand('editor.action.formatDocument')
+      }
+    )
+  )
 }
 
 export function deactivate(): void {} // eslint-disable-line @typescript-eslint/no-empty-function
