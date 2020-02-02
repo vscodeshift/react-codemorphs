@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "displayName": "React Codemorphs",
   "publisher": "vscodeshift",
-  "description": "skeleton for a VSCode extension for applying JSCodeshift transforms",
+  "description": "Codemod commands for everyday work with React. All commands support Flow, TypeScript, and plain JS.",
   "engines": {
     "vscode": "^1.40.0"
   },
@@ -113,7 +113,8 @@
     "vscode",
     "jscodeshift",
     "codemods",
-    "react"
+    "react",
+    "refactoring"
   ],
   "author": "Andy Edwards",
   "license": "MIT",
