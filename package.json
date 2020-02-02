@@ -11,6 +11,7 @@
     "Other"
   ],
   "activationEvents": [
+    "onCommand:extension.addProp",
     "onCommand:extension.wrapWithJSXElement",
     "onCommand:extension.wrapWithChildFunctionElement"
   ],
@@ -24,6 +25,10 @@
       {
         "command": "extension.wrapWithChildFunctionElement",
         "title": "React Codemorphs: Wrap with Child Function Element"
+      },
+      {
+        "command": "extension.addProp",
+        "title": "React Codemorphs: Add Prop"
       }
     ]
   },

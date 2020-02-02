@@ -6,7 +6,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 ![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/vscodeshift.react-codemorphs)
 
-codemod commands for everyday work with React
+Codemod commands for everyday work with React. All commands support Flow, TypeScript, and plain JS.
 
 # Wrap with JSX Element
 
@@ -71,4 +71,37 @@ const Foo = () => (
     <Test>{(): React.ReactNode => <Bar />}</Test>
   </div>
 )
+```
+
+# `addProp`
+
+Adds the identifier under the cursor as a prop to the surrounding component.
+Adds a prop type declaration if possible, and binds the identifier via destructuring on `props`
+or replaces it with a reference to `props`/`this.props`.
+
+## Example
+
+### Before
+
+```tsx
+import * as React from 'react'
+
+interface Props {}
+
+const Foo = (props: Props) => <div>{text}</div>
+```
+
+Position cursor in the middle of `text` and then run the command.
+The command will prompt you what type to use for the property, enter `string` for example:
+
+### After (with formatting)
+
+```tsx
+import * as React from 'react'
+
+interface Props {
+  text: string
+}
+
+const Foo = (props: Props) => <div>{props.text}</div>
 ```
