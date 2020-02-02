@@ -54,13 +54,13 @@
     ],
     "prepare": {
       "path": "semantic-release-vsce",
-      "packageVsix": "@vscodeshift/react-codemorphs.vsix"
+      "packageVsix": "react-codemorphs.vsix"
     },
     "publish": [
       "semantic-release-vsce",
       {
         "path": "@semantic-release/github",
-        "assets": "@vscodeshift/react-codemorphs.vsix"
+        "assets": "react-codemorphs.vsix"
       }
     ]
   },
