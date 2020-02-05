@@ -13,7 +13,9 @@
   "activationEvents": [
     "onCommand:extension.addProp",
     "onCommand:extension.wrapWithJSXElement",
-    "onCommand:extension.wrapWithChildFunctionElement"
+    "onCommand:extension.wrapWithChildFunctionElement",
+    "onCommand:extension.renderConditionally",
+    "onCommand:extension.wrapWithTernaryConditional"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -29,6 +31,14 @@
       {
         "command": "extension.addProp",
         "title": "React Codemorphs: Add Prop"
+      },
+      {
+        "command": "extension.renderConditionally",
+        "title": "React Codemorphs: Render Contditionally"
+      },
+      {
+        "command": "extension.wrapWithTernaryConditional",
+        "title": "React Codemorphs: Wrap with Ternary Conditional"
       }
     ]
   },
@@ -176,7 +186,7 @@
     "@babel/runtime": "^7.1.5",
     "@vscodeshift/apply-jscodeshift": "^1.0.1",
     "jscodeshift": "^0.7.0",
-    "react-codemorphs": "^1.0.0"
+    "react-codemorphs": "^1.2.0"
   },
   "renovate": {
     "extends": [

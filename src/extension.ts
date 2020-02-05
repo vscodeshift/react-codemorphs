@@ -55,6 +55,26 @@ export function activate(context: vscode.ExtensionContext): void {
       await vscode.commands.executeCommand('editor.action.formatDocument')
     })
   )
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
+      'extension.renderConditionally',
+      async () => {
+        await applyTransform(require('react-codemorphs/renderConditionally'))
+        await vscode.commands.executeCommand('editor.action.formatDocument')
+      }
+    )
+  )
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
+      'extension.wrapWithTernaryConditional',
+      async () => {
+        await applyTransform(
+          require('react-codemorphs/wrapWithTernaryConditional')
+        )
+        await vscode.commands.executeCommand('editor.action.formatDocument')
+      }
+    )
+  )
 }
 
 export function deactivate(): void {} // eslint-disable-line @typescript-eslint/no-empty-function

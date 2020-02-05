@@ -105,3 +105,80 @@ interface Props {
 
 const Foo = (props: Props) => <div>{props.text}</div>
 ```
+
+# Render Conditionally
+
+Wraps the selected JSX in `{true && ...}`. If
+there are multiple siblings selected, wraps in `{true && <React.Fragment>...</React.Fragment>}`.
+
+If you want to wrap in a ternary conditional like Glean's
+"Render Conditionally" refactor, see `wrapWithTernaryConditional`.
+
+## Example
+
+### Before
+
+```tsx
+const Foo = () => (
+  <div>
+    {foo} bar
+    <span />
+    {baz}
+  </div>
+)
+```
+
+Select from before `{foo}` to before `{baz}`, then run the command.
+
+### After (with formatting)
+
+```tsx
+const Foo = () => (
+  <div>
+    {true && (
+      <React.Fragment>
+        {foo} bar
+        <span />
+      </React.Fragment>
+    )}
+    {baz}
+  </div>
+)
+```
+
+# Wrap with Ternary Conditional
+
+Wraps the selected JSX in `{true ? ... : null}`. If
+there are multiple siblings selected, wraps in `{true ? <React.Fragment>...</React.Fragment> : null}`.
+
+## Example
+
+### Before
+
+```tsx
+const Foo = () => (
+  <div>
+    {foo} bar
+    <span />
+    {baz}
+  </div>
+)
+```
+
+Select from before `{foo}` to before `{baz}`, then run the command.
+
+### After (with formatting)
+
+```tsx
+const Foo = () => (
+  <div>
+    {true ? (
+      <React.Fragment>
+        {foo} bar
+        <span />
+      </React.Fragment>
+    ) : null}
+    {baz}
+  </div>
+)
+```
